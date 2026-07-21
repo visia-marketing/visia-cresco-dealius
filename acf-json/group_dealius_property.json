@@ -1,0 +1,381 @@
+{
+    "key": "group_dealius_property",
+    "title": "Property Details",
+    "fields": [
+        {
+            "key": "field_cd_name",
+            "label": "Name",
+            "name": "name",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_address",
+            "label": "Address",
+            "name": "address",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_citystatezipcalc",
+            "label": "City / State / Zip",
+            "name": "citystatezipcalc",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_latitude",
+            "label": "Latitude",
+            "name": "latitude",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_longitude",
+            "label": "Longitude",
+            "name": "longitude",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_propertytype",
+            "label": "Property Type",
+            "name": "propertytype",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_imageurl",
+            "label": "Image URL",
+            "name": "imageurl",
+            "type": "url"
+        },
+        {
+            "key": "field_cd_video_url",
+            "label": "Video URL",
+            "name": "video_url",
+            "type": "url"
+        },
+        {
+            "key": "field_cd_id",
+            "label": "Dealius Property ID",
+            "name": "id",
+            "type": "text",
+            "instructions": "Dealius MainPropertyID. Set by the importer."
+        },
+        {
+            "key": "field_cd_origin_property_id",
+            "label": "Origin Property ID",
+            "name": "origin_property_id",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_sf",
+            "label": "Building SF",
+            "name": "sf",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_landacres",
+            "label": "Land Acres",
+            "name": "landacres",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_industrialsf",
+            "label": "Industrial SF",
+            "name": "industrialsf",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_officesf",
+            "label": "Office SF",
+            "name": "officesf",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_retailsf",
+            "label": "Retail SF",
+            "name": "retailsf",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_landsf",
+            "label": "Land SF",
+            "name": "landsf",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_contiguousmaxsfavailable",
+            "label": "Max Contiguous SF Available",
+            "name": "contiguousmaxsfavailable",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_floorsnumber",
+            "label": "Number of Floors",
+            "name": "floorsnumber",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_year_built",
+            "label": "Year Built",
+            "name": "year_built",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_units_count",
+            "label": "Number of Units",
+            "name": "units_count",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_county",
+            "label": "County",
+            "name": "county",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_submarket",
+            "label": "Submarket",
+            "name": "submarket",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_class",
+            "label": "Building Class",
+            "name": "class",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_heat",
+            "label": "Heat",
+            "name": "heat",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_ac",
+            "label": "Air Conditioning",
+            "name": "ac",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_gas",
+            "label": "Gas",
+            "name": "gas",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_sewer",
+            "label": "Sewer",
+            "name": "sewer",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_water",
+            "label": "Water",
+            "name": "water",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_parcelnumber",
+            "label": "Parcel Number",
+            "name": "parcelnumber",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_zoning",
+            "label": "Zoning",
+            "name": "zoning",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_primaryuse",
+            "label": "Primary Use",
+            "name": "primaryuse",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_secondaryuse",
+            "label": "Secondary Use",
+            "name": "secondaryuse",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_comments",
+            "label": "Description / Comments",
+            "name": "comments",
+            "type": "textarea"
+        },
+        {
+            "key": "field_cd_askingprice",
+            "label": "Asking Price",
+            "name": "askingprice",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_askingrate",
+            "label": "Asking Rate",
+            "name": "askingrate",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_listing_askingrate_min",
+            "label": "Listing Asking Rate Min",
+            "name": "listing_askingrate_min",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_listing_askingrate_max",
+            "label": "Listing Asking Rate Max",
+            "name": "listing_askingrate_max",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_availability",
+            "label": "Availability",
+            "name": "availability",
+            "type": "text",
+            "instructions": "Sale / Lease / Both. Rolled up from the property's listings at import."
+        },
+        {
+            "key": "field_cd_listingtype",
+            "label": "Listing Type (legacy string)",
+            "name": "listingtype",
+            "type": "text",
+            "instructions": "Slash-joined unique listing types, kept for the front-end filter's string match."
+        },
+        {
+            "key": "field_cd_price_min",
+            "label": "Price Min",
+            "name": "price_min",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_price_max",
+            "label": "Price Max",
+            "name": "price_max",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_rate_min",
+            "label": "Rate Min",
+            "name": "rate_min",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_rate_max",
+            "label": "Rate Max",
+            "name": "rate_max",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_size_min",
+            "label": "Available Size Min",
+            "name": "size_min",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_size_max",
+            "label": "Available Size Max",
+            "name": "size_max",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_total_available_sf",
+            "label": "Total Available SF",
+            "name": "total_available_sf",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_units",
+            "label": "Units / Available Spaces",
+            "name": "units",
+            "type": "repeater",
+            "instructions": "One row per available suite. Rebuilt on every import.",
+            "layout": "table",
+            "button_label": "Add Unit",
+            "sub_fields": [
+                {
+                    "key": "field_cd_unit_suite",
+                    "label": "Suite",
+                    "name": "suite",
+                    "type": "text",
+                    "parent_repeater": "field_cd_units"
+                },
+                {
+                    "key": "field_cd_unit_size",
+                    "label": "Size (SF)",
+                    "name": "size",
+                    "type": "number",
+                    "parent_repeater": "field_cd_units"
+                },
+                {
+                    "key": "field_cd_unit_property_type",
+                    "label": "Property Type",
+                    "name": "property_type",
+                    "type": "text",
+                    "parent_repeater": "field_cd_units"
+                },
+                {
+                    "key": "field_cd_unit_listing_type",
+                    "label": "Listing Type",
+                    "name": "listing_type",
+                    "type": "text",
+                    "parent_repeater": "field_cd_units"
+                }
+            ]
+        },
+        {
+            "key": "field_5c19c76e82b1c",
+            "label": "Listing Brokers",
+            "name": "listingbrokers",
+            "type": "repeater",
+            "instructions": "Brokers attached at import. Field keys preserved from the legacy ACF group so existing reads keep matching.",
+            "layout": "table",
+            "button_label": "Add Broker",
+            "sub_fields": [
+                {
+                    "key": "field_5c19c78382b1d",
+                    "label": "Contact ID",
+                    "name": "contact_id",
+                    "type": "text",
+                    "parent_repeater": "field_5c19c76e82b1c"
+                },
+                {
+                    "key": "field_5c19c78f82b1e",
+                    "label": "Broker Name",
+                    "name": "broker_name",
+                    "type": "text",
+                    "parent_repeater": "field_5c19c76e82b1c"
+                },
+                {
+                    "key": "field_5c19c79882b1f",
+                    "label": "Broker Email",
+                    "name": "broker_email",
+                    "type": "text",
+                    "parent_repeater": "field_5c19c76e82b1c"
+                },
+                {
+                    "key": "field_5cb72a744c649",
+                    "label": "Sort Order",
+                    "name": "sortorder",
+                    "type": "number",
+                    "parent_repeater": "field_5c19c76e82b1c"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "dealius_property"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Owned by the cd-dealius-property plugin. Do not edit in the DB; edit the acf-json.",
+    "modified": 1717200000
+}
