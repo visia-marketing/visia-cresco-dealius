@@ -192,6 +192,29 @@ class Property_Writer {
 			'secondaryuse'             => cd_arr_get( $details, 'SecondaryUse' ),
 		);
 
+		// Loading & logistics — only meaningful on industrial buildings.
+		//
+		// The keys are always written, blank for non-industrial, so a property that
+		// gets re-typed away from Industrial doesn't keep stale dock counts.
+		//
+		// A null from the API becomes '' ("not reported", template hides the row).
+		// A real 0 is kept as 0 and does display: "no interior docks" is a fact.
+		$is_industrial   = ( 'Industrial' === $type_name );
+		$loading_fields  = array(
+			'int_docks'             => 'NumberOfIntDocks',
+			'ext_docks'             => 'NumberOfExtDocks',
+			'gl_doors'              => 'NumberOfGLDoors',
+			'gl_doors_dim'          => 'GlDidDim',
+			'truck_level_doors'     => 'NumberOfTruckLevelDoors',
+			'ext_levelers'          => 'NumberOfExtLevelers',
+			'int_levelers'          => 'NumberOfIntLevelers',
+			'loading_door_comments' => 'LoadingAndDoorComments',
+		);
+		foreach ( $loading_fields as $meta_key => $api_key ) {
+			$value = $is_industrial ? cd_arr_get( $details, $api_key ) : null;
+			$meta[ $meta_key ] = ( null === $value ) ? '' : $value;
+		}
+
 		foreach ( $meta as $key => $value ) {
 			update_post_meta( $post_id, $key, $value );
 		}
