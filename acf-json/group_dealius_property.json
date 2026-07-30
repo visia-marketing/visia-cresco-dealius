@@ -330,6 +330,180 @@
             "type": "textarea"
         },
         {
+            "key": "field_cd_construction_status",
+            "label": "Construction Status",
+            "name": "construction_status",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_construction_type",
+            "label": "Construction Type",
+            "name": "construction_type",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_exterior_type",
+            "label": "Exterior Type",
+            "name": "exterior_type",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_building_sf_detail",
+            "label": "Building SF (details)",
+            "name": "building_sf_detail",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_building_dimensions",
+            "label": "Building Dimensions",
+            "name": "building_dimensions",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_land_size_acres",
+            "label": "Land Size (Acres)",
+            "name": "land_size_acres",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_lot_dimensions",
+            "label": "Lot Dimensions",
+            "name": "lot_dimensions",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_floor_type",
+            "label": "Floor Type",
+            "name": "floor_type",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_ceiling_height_min",
+            "label": "Ceiling Height Min",
+            "name": "ceiling_height_min",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_ceiling_height_max",
+            "label": "Ceiling Height Max",
+            "name": "ceiling_height_max",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_clear_height",
+            "label": "Clear Height",
+            "name": "clear_height",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_parking_spaces",
+            "label": "Parking Spaces",
+            "name": "parking_spaces",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_parking_comments",
+            "label": "Parking Comments",
+            "name": "parking_comments",
+            "type": "textarea"
+        },
+        {
+            "key": "field_cd_parking_ratio",
+            "label": "Parking Ratio",
+            "name": "parking_ratio",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_crane_comments",
+            "label": "Crane Comments",
+            "name": "crane_comments",
+            "type": "textarea"
+        },
+        {
+            "key": "field_cd_power_comments",
+            "label": "Power Comments",
+            "name": "power_comments",
+            "type": "textarea"
+        },
+        {
+            "key": "field_cd_amps",
+            "label": "Amps",
+            "name": "amps",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_volts",
+            "label": "Volts",
+            "name": "volts",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_utilities_comments",
+            "label": "Utilities Comments",
+            "name": "utilities_comments",
+            "type": "textarea"
+        },
+        {
+            "key": "field_cd_lighting_type",
+            "label": "Lighting Type",
+            "name": "lighting_type",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_year_refurbished",
+            "label": "Year Refurbished",
+            "name": "year_refurbished",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_roof_type",
+            "label": "Roof Type",
+            "name": "roof_type",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_rail_line",
+            "label": "Rail Line",
+            "name": "rail_line",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_rail_status",
+            "label": "Rail Status",
+            "name": "rail_status",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_sprinklers",
+            "label": "Sprinklers",
+            "name": "sprinklers",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_has_ac",
+            "label": "Has AC",
+            "name": "has_ac",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_has_heat",
+            "label": "Has Heat",
+            "name": "has_heat",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_handicapped_accessible",
+            "label": "Handicapped Accessible (ADA)",
+            "name": "handicapped_accessible",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_deck",
+            "label": "Deck",
+            "name": "deck",
+            "type": "text"
+        },
+        {
             "key": "field_cd_units",
             "label": "Units / Available Spaces",
             "name": "units",

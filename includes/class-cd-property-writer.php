@@ -192,27 +192,77 @@ class Property_Writer {
 			'secondaryuse'             => cd_arr_get( $details, 'SecondaryUse' ),
 		);
 
-		// Loading & logistics — only meaningful on industrial buildings.
+		// Extended /details fields backing the property page's accordion.
 		//
-		// The keys are always written, blank for non-industrial, so a property that
-		// gets re-typed away from Industrial doesn't keep stale dock counts.
+		// Written for every property type, not just Industrial: the API returns null
+		// for fields that don't apply, and the template hides any row without a
+		// value. Writing them unconditionally also means a re-typed property can't
+		// keep stale values from its previous type.
 		//
-		// A null from the API becomes '' ("not reported", template hides the row).
-		// A real 0 is kept as 0 and does display: "no interior docks" is a fact.
-		$is_industrial   = ( 'Industrial' === $type_name );
-		$loading_fields  = array(
-			'int_docks'             => 'NumberOfIntDocks',
-			'ext_docks'             => 'NumberOfExtDocks',
-			'gl_doors'              => 'NumberOfGLDoors',
-			'gl_doors_dim'          => 'GlDidDim',
-			'truck_level_doors'     => 'NumberOfTruckLevelDoors',
-			'ext_levelers'          => 'NumberOfExtLevelers',
-			'int_levelers'          => 'NumberOfIntLevelers',
-			'loading_door_comments' => 'LoadingAndDoorComments',
+		// A null becomes '' ("not reported" - row hidden). A real 0 is preserved and
+		// does display, because "0 interior docks" is a fact worth showing.
+		$detail_fields = array(
+			// General information
+			'construction_status'    => 'ConstructionStatus',
+			'construction_type'      => 'ConstructionType',
+			'exterior_type'          => 'ExteriorType',
+			// Size & area
+			'building_sf_detail'     => 'BuildingSF',
+			'building_dimensions'    => 'BuildingDimensions',
+			'land_size_acres'        => 'LandSizeAcres',
+			'lot_dimensions'         => 'LotDimensions',
+			// Height & structural
+			'floor_type'             => 'FloorType',
+			'ceiling_height_min'     => 'CeilingHeightMin',
+			'ceiling_height_max'     => 'CeilingHeightMax',
+			'clear_height'           => 'ClearHeight',
+			// Parking & access
+			'parking_spaces'         => 'NumberOfParkingSpaces',
+			'parking_comments'       => 'ParkingComments',
+			'parking_ratio'          => 'ParkingRatio',
+			// Loading & logistics
+			'int_docks'              => 'NumberOfIntDocks',
+			'ext_docks'              => 'NumberOfExtDocks',
+			'gl_doors'               => 'NumberOfGLDoors',
+			'gl_doors_dim'           => 'GlDidDim',
+			'truck_level_doors'      => 'NumberOfTruckLevelDoors',
+			'ext_levelers'           => 'NumberOfExtLevelers',
+			'int_levelers'           => 'NumberOfIntLevelers',
+			'loading_door_comments'  => 'LoadingAndDoorComments',
+			'crane_comments'         => 'CraneComments',
+			// Utilities & power. Dealius has no PowerComments field; `Power` is the
+			// free-text one (e.g. "110a/208v 3p"), so that backs "Power Comments".
+			'power_comments'         => 'Power',
+			'amps'                   => 'Amps',
+			'volts'                  => 'Volts',
+			'utilities_comments'     => 'UtilitiesComments',
+			// Interior & build-out
+			'lighting_type'          => 'LightingType',
+			// Amenities / zoning / lifecycle
+			'year_refurbished'       => 'YearRefurbished',
+			'roof_type'              => 'RoofType',
+			// Visibility & location
+			'rail_line'              => 'RailLine',
+			'rail_status'            => 'RailStatus',
 		);
-		foreach ( $loading_fields as $meta_key => $api_key ) {
-			$value = $is_industrial ? cd_arr_get( $details, $api_key ) : null;
+		foreach ( $detail_fields as $meta_key => $api_key ) {
+			$value             = cd_arr_get( $details, $api_key );
 			$meta[ $meta_key ] = ( null === $value ) ? '' : $value;
+		}
+
+		// Booleans need their own handling: update_post_meta() stores false as '',
+		// which would make "No" indistinguishable from "not reported". Normalise to
+		// '1' / '0' / '' so the template can render Yes / No / hide-the-row.
+		$boolean_fields = array(
+			'sprinklers'             => 'Sprinklers',
+			'has_ac'                 => 'HasAC',
+			'has_heat'               => 'HasHeat',
+			'handicapped_accessible' => 'HandicappedAccessible',
+			'deck'                   => 'Deck',
+		);
+		foreach ( $boolean_fields as $meta_key => $api_key ) {
+			$value             = cd_arr_get( $details, $api_key );
+			$meta[ $meta_key ] = ( null === $value || '' === $value ) ? '' : ( $value ? '1' : '0' );
 		}
 
 		foreach ( $meta as $key => $value ) {
