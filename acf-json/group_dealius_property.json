@@ -282,6 +282,54 @@
             "type": "number"
         },
         {
+            "key": "field_cd_int_docks",
+            "label": "No. of Int. Docks",
+            "name": "int_docks",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_ext_docks",
+            "label": "No. of Ext. Docks",
+            "name": "ext_docks",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_gl_doors",
+            "label": "No. of Grade Level / Drive-In Doors",
+            "name": "gl_doors",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_gl_doors_dim",
+            "label": "GL / Drive-In Doors Dim. (HxW)",
+            "name": "gl_doors_dim",
+            "type": "text"
+        },
+        {
+            "key": "field_cd_truck_level_doors",
+            "label": "No. of DH / Truck-Level Doors",
+            "name": "truck_level_doors",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_ext_levelers",
+            "label": "No. of Ext. Levelers",
+            "name": "ext_levelers",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_int_levelers",
+            "label": "No. of Int. Levelers",
+            "name": "int_levelers",
+            "type": "number"
+        },
+        {
+            "key": "field_cd_loading_door_comments",
+            "label": "Loading & Door Comments",
+            "name": "loading_door_comments",
+            "type": "textarea"
+        },
+        {
             "key": "field_cd_units",
             "label": "Units / Available Spaces",
             "name": "units",
