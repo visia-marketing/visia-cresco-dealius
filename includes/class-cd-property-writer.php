@@ -348,11 +348,22 @@ class Property_Writer {
 				$size  = (float) cd_arr_get( $space, 'SpaceAvailableSf', 0 );
 				$suite = trim( (string) cd_arr_get( $space, 'AddressLine2', '' ) );
 
-				// Per-unit property type: the space type if known, else the building type.
-				$space_meta    = $this->match_space( $space, $spaces );
-				$property_type = ! empty( $space_meta['SpaceTypeName'] )
-					? (string) $space_meta['SpaceTypeName']
-					: (string) $parent_type;
+				// Per-unit property type, best source first:
+				//   1. the /spaces record — richest vocabulary (Flex Office, Medical,
+				//      Restaurant, … values the propertytypes lookup does not carry);
+				//   2. PropertyTypeName on the listing's own entry — always present and
+				//      needs no extra request, so it still holds when /spaces returns
+				//      nothing (that endpoint intermittently comes back empty);
+				//   3. the building type, for suites Dealius describes neither way.
+				$space_meta   = $this->match_space( $space, $spaces );
+				$entry_type   = trim( (string) cd_arr_get( $space, 'PropertyTypeName', '' ) );
+				if ( ! empty( $space_meta['SpaceTypeName'] ) ) {
+					$property_type = (string) $space_meta['SpaceTypeName'];
+				} elseif ( '' !== $entry_type ) {
+					$property_type = $entry_type;
+				} else {
+					$property_type = (string) $parent_type;
+				}
 
 				if ( '' === $suite && ! empty( $space_meta['Name'] ) ) {
 					$suite = trim( (string) $space_meta['Name'] );
