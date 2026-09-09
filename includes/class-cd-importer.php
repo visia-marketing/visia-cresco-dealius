@@ -98,6 +98,7 @@ class Importer {
 		$page         = 1;
 		$pages_total  = null;
 		$reached_end  = false;
+		$fetch_failed = false;
 
 		do {
 			$response = $this->api->get_listings(
@@ -107,7 +108,21 @@ class Importer {
 				)
 			);
 
-			if ( ! is_array( $response ) || empty( $response['Data'] ) ) {
+			// A failed request is NOT proof the feed ended — /listings intermittently
+			// returns nothing usable. Treating it as the end and then retiring is what
+			// wipes the catalogue, so record it as a failure and leave retirement off.
+			if ( ! is_array( $response ) ) {
+				$fetch_failed = true;
+				$this->logger->log(
+					'Listing fetch FAILED on page ' . $page . ' of '
+					. ( null === $pages_total ? 'unknown' : $pages_total )
+					. ' — stopping early; retirement will be skipped.'
+				);
+				break;
+			}
+
+			// An empty page from a healthy response is a genuine end of feed.
+			if ( empty( $response['Data'] ) ) {
 				$reached_end = true;
 				break;
 			}
@@ -182,6 +197,7 @@ class Importer {
 		$can_retire = ! $args['dry_run']
 			&& '' === $args['property']
 			&& $reached_end
+			&& ! $fetch_failed
 			&& count( $listing_ids ) > 0;
 
 		if ( $can_retire ) {
