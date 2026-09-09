@@ -348,14 +348,25 @@ class Property_Writer {
 				$size  = (float) cd_arr_get( $space, 'SpaceAvailableSf', 0 );
 				$suite = trim( (string) cd_arr_get( $space, 'AddressLine2', '' ) );
 
-				// Per-unit property type: the space type if known, else the building type.
-				$space_id      = cd_arr_get( $space, 'PropertySpaceID' );
-				$property_type = ( $space_id && ! empty( $spaces[ $space_id ]['SpaceTypeName'] ) )
-					? (string) $spaces[ $space_id ]['SpaceTypeName']
-					: (string) $parent_type;
+				// Per-unit property type, best source first:
+				//   1. the /spaces record — richest vocabulary (Flex Office, Medical,
+				//      Restaurant, … values the propertytypes lookup does not carry);
+				//   2. PropertyTypeName on the listing's own entry — always present and
+				//      needs no extra request, so it still holds when /spaces returns
+				//      nothing (that endpoint intermittently comes back empty);
+				//   3. the building type, for suites Dealius describes neither way.
+				$space_meta   = $this->match_space( $space, $spaces );
+				$entry_type   = trim( (string) cd_arr_get( $space, 'PropertyTypeName', '' ) );
+				if ( ! empty( $space_meta['SpaceTypeName'] ) ) {
+					$property_type = (string) $space_meta['SpaceTypeName'];
+				} elseif ( '' !== $entry_type ) {
+					$property_type = $entry_type;
+				} else {
+					$property_type = (string) $parent_type;
+				}
 
-				if ( '' === $suite && $space_id && ! empty( $spaces[ $space_id ]['Name'] ) ) {
-					$suite = trim( (string) $spaces[ $space_id ]['Name'] );
+				if ( '' === $suite && ! empty( $space_meta['Name'] ) ) {
+					$suite = trim( (string) $space_meta['Name'] );
 				}
 
 				// Useless row: no label and no size.
@@ -392,6 +403,29 @@ class Property_Writer {
 		}
 
 		return array_values( $rows );
+	}
+
+	/**
+	 * Find the /spaces record matching one of a listing's Properties entries.
+	 *
+	 * The spaces map is keyed by PropertySpaceID, but the Properties entries are
+	 * property records that carry a PropertyID instead — in Dealius the suite's
+	 * PropertyID is the value that matches, which is what the legacy importer
+	 * relied on. PropertySpaceID is still tried first so a payload that does carry
+	 * one keeps working.
+	 *
+	 * @param array $space  one entry from $listing['Properties']
+	 * @param array $spaces spaces keyed by PropertySpaceID
+	 * @return array|null the space record, or null when nothing matches
+	 */
+	private function match_space( array $space, array $spaces ) {
+		foreach ( array( 'PropertySpaceID', 'PropertyID' ) as $key ) {
+			$id = cd_arr_get( $space, $key );
+			if ( $id && isset( $spaces[ $id ] ) ) {
+				return $spaces[ $id ];
+			}
+		}
+		return null;
 	}
 
 	/* ---- brokers ----------------------------------------------------------- */
